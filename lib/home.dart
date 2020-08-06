@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_napza/presentation/screens/buku_napza/buku_napza.dart';
 import 'package:info_napza/widget/bottom_navbar.dart';
 import 'package:info_napza/details_screen.dart';
 import 'package:info_napza/home_page.dart';
@@ -14,7 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _index = 1;
   final List<Widget> _children = [
     DetailsScreen(),
-    MyHomePage()
+    MyHomePageScreen(),
+    BookViewScreen()
   ];
 
   @override
@@ -51,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavItem(
               title: "Home",
-              svgScr: "assets/icons/home.svg",
+              svgScr: "assets/icons/calendar.svg",
               press: () {
                 setState(() {
                   _index = 1;

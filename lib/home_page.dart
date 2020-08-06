@@ -2,9 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:info_napza/category_card.dart';
 import 'package:info_napza/details_screen.dart';
+import 'package:info_napza/presentation/screens/buku_napza/buku_napza.dart';
 import 'package:info_napza/search_bar.dart';
+import 'package:native_pdf_view/native_pdf_view.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePageScreen extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _MyHomePageScreenState();
+}
+
+class _MyHomePageScreenState extends State<MyHomePageScreen> {
+  PDFDocument document;
+
+
+  Future<void> _getDocument() async{
+    document = await PDFDocument.openAsset('assets/example.pdf');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getDocument();
+    print('homepage');
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context)
@@ -74,7 +95,7 @@ class MyHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return DetailsScreen();
+                                return BookViewScreen(document: document);
                               }),
                             );
                           },
