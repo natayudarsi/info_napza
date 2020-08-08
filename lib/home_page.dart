@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:info_napza/category_card.dart';
+import 'package:info_napza/common/routing/routes.dart';
 import 'package:info_napza/details_screen.dart';
-import 'package:info_napza/presentation/screens/buku_napza/buku_napza.dart';
 import 'package:info_napza/search_bar.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 
@@ -81,29 +81,35 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                         CategoryCard(
                           title: "Jenis Napza",
                           svgSrc: "assets/icons/Hamburger.svg",
-                          press: () {},
+                          press: () {
+                            // Navigator.of(context).pushNamed(Routes.kuisScreen);
+                          },
                         ),
                         CategoryCard(
                           title: "Buku-buku Napza",
                           svgSrc: "assets/icons/Excrecises.svg",
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
+                          },
                         ),
                         CategoryCard(
                           title: "Video Napza",
                           svgSrc: "assets/icons/Meditation.svg",
                           press: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return BookViewScreen(document: document);
-                              }),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) {
+                            //     return BookViewScreen(document: document);
+                            //   }),
+                            // );
                           },
                         ),
                         CategoryCard(
                           title: "Kuis",
                           svgSrc: "assets/icons/yoga.svg",
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed(Routes.kuisScreen);
+                          },
                         ),
                       ],
                     )
