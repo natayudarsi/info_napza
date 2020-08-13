@@ -4,9 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CategoryCard extends StatelessWidget {
   final String svgSrc;
   final String title;
+  final String pictureSrc;
   final Function press;
   const CategoryCard({
     Key key,
+    this.pictureSrc,
     this.svgSrc,
     this.title,
     this.press,
@@ -39,7 +41,11 @@ class CategoryCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Spacer(),
-                  SvgPicture.asset(svgSrc),
+                    svgSrc != null ? 
+                      SvgPicture.asset(svgSrc) : 
+                      Image.asset(pictureSrc,
+                        height: 120,
+                        fit: BoxFit.fill,),
                   Spacer(),
                   Text(
                     title,

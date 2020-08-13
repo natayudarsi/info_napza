@@ -82,7 +82,7 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           title: "Jenis Napza",
                           svgSrc: "assets/icons/Hamburger.svg",
                           press: () {
-                            // Navigator.of(context).pushNamed(Routes.kuisScreen);
+                            Navigator.of(context).pushNamed(Routes.jenisNapzaScreen);
                           },
                         ),
                         CategoryCard(

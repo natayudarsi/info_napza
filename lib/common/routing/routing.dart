@@ -5,6 +5,7 @@ import 'package:info_napza/details_screen.dart';
 import 'package:info_napza/home_page.dart';
 import 'package:info_napza/main.dart';
 import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dart';
+import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
 
@@ -17,11 +18,11 @@ class RouteGenerator {
         return MaterialPageRoute<dynamic>(
           builder: (_) => _buildHomeScreen());
       
-      case Routes.jenisNapzaScreen:
-        return SlideRouteTransition(
-         animationTo: AnimationTo.left,
-         page: _buildJenisScreen()
-        ) ;
+      // case Routes.jenisNapzaScreen:
+      //   return SlideRouteTransition(
+      //    animationTo: AnimationTo.left,
+      //    page: _buildJenisScreen()
+      //   ) ;
       case Routes.kuisScreen:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
@@ -33,6 +34,12 @@ class RouteGenerator {
           animationTo: AnimationTo.left,
           page: _buildBukuNapzaScreen()
         );
+
+      case Routes.jenisNapzaScreen:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildJenisNapzaScreen()
+        );
       default: 
       return MaterialPageRoute<dynamic>(builder: (_) => _buildErrorScreen());
     }
@@ -40,10 +47,6 @@ class RouteGenerator {
 
   static Widget _buildHomeScreen() {
     return MyHomePageScreen();
-  }
-
-  static Widget _buildJenisScreen() {
-    return CategoryCard();
   }
   
   static Widget _kuisScreen() {
@@ -55,5 +58,9 @@ class RouteGenerator {
 
   static Widget _buildBukuNapzaScreen() {
     return BukuNapzaScreen();
+  }
+
+  static Widget _buildJenisNapzaScreen() {
+    return JenisNapzaScreen();
   }
 }
