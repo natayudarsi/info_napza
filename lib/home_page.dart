@@ -44,39 +44,19 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
               )
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 52,
-                      width: 52,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF2BEA1),
-                        shape: BoxShape.circle
-                      ),
-                      child: SvgPicture.asset('assets/icons/menu.svg'),
-                    ),
-                  ),
-                  Text(
-                    'Aplikasi \nInformasi Napza',
-                    style: Theme.of(context)
-                          .textTheme
-                          .display1
-                          .copyWith(fontWeight: FontWeight.w900),
-                  ),
-                  SearchBar(),
-                  Expanded(
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: size.height * .65,
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(40))
+                ),
                     child: GridView.count(
                       crossAxisCount: 2,
-                      childAspectRatio: .85,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                      // childAspectRatio: .85,
+                      // crossAxisSpacing: 5,
+                      // mainAxisSpacing: 5,
                       children: <Widget>[
                         CategoryCard(
                           title: "Jenis Napza",
@@ -113,11 +93,82 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                         ),
                       ],
                     )
-                  )
-                ],
               ),
             )
-          )
+          // SafeArea(
+          //   child: Padding(
+          //     padding: const EdgeInsets.symmetric(horizontal: 20),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: <Widget>[
+          //         Align(
+          //           alignment: Alignment.topRight,
+          //           child: Container(
+          //             alignment: Alignment.center,
+          //             height: 52,
+          //             width: 52,
+          //             decoration: BoxDecoration(
+          //               color: Color(0xFFF2BEA1),
+          //               shape: BoxShape.circle
+          //             ),
+          //             child: SvgPicture.asset('assets/icons/menu.svg'),
+          //           ),
+          //         ),
+          //         Text(
+          //           'Aplikasi \nInformasi Napza',
+          //           style: Theme.of(context)
+          //                 .textTheme
+          //                 .display1
+          //                 .copyWith(fontWeight: FontWeight.w900),
+          //         ),
+          //         SearchBar(),
+          //         Expanded(
+          //           child: GridView.count(
+          //             crossAxisCount: 2,
+          //             childAspectRatio: .85,
+          //             crossAxisSpacing: 20,
+          //             mainAxisSpacing: 20,
+          //             children: <Widget>[
+          //               CategoryCard(
+          //                 title: "Jenis Napza",
+          //                 svgSrc: "assets/icons/Hamburger.svg",
+          //                 press: () {
+          //                   Navigator.of(context).pushNamed(Routes.jenisNapzaScreen);
+          //                 },
+          //               ),
+          //               CategoryCard(
+          //                 title: "Buku-buku Napza",
+          //                 svgSrc: "assets/icons/Excrecises.svg",
+          //                 press: () {
+          //                   Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
+          //                 },
+          //               ),
+          //               CategoryCard(
+          //                 title: "Video Napza",
+          //                 svgSrc: "assets/icons/Meditation.svg",
+          //                 press: () {
+          //                   // Navigator.push(
+          //                   //   context,
+          //                   //   MaterialPageRoute(builder: (context) {
+          //                   //     return BookViewScreen(document: document);
+          //                   //   }),
+          //                   // );
+          //                 },
+          //               ),
+          //               CategoryCard(
+          //                 title: "Kuis",
+          //                 svgSrc: "assets/icons/yoga.svg",
+          //                 press: () {
+          //                   Navigator.of(context).pushNamed(Routes.kuisScreen);
+          //                 },
+          //               ),
+          //             ],
+          //           )
+          //         )
+          //       ],
+          //     ),
+          //   )
+          // )
         ],
       ),
     );
