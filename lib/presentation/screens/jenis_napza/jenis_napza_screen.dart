@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:info_napza/category_card.dart';
 import 'package:info_napza/common/routing/routes.dart';
+import 'package:info_napza/model/jenis_napza_model.dart';
 
 class JenisNapzaScreen extends StatefulWidget{
   @override
@@ -47,6 +48,11 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen>{
                           title: "Cocain",
                           pictureSrc: "assets/images/cocain.jpeg",
                           press: () {
+                            Map payload = {
+                              'napza': cocain,
+                              'efek': efekCocain,
+                            };
+                            Navigator.of(context).pushNamed(Routes.detailJenisNapza, arguments: payload);
                           },
                         ),
                         CategoryCard(

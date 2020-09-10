@@ -5,7 +5,9 @@ import 'package:info_napza/details_screen.dart';
 import 'package:info_napza/home_page.dart';
 import 'package:info_napza/main.dart';
 import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dart';
+import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
+import 'package:info_napza/presentation/screens/quiz_screen/quiz_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
 
@@ -23,11 +25,11 @@ class RouteGenerator {
       //    animationTo: AnimationTo.left,
       //    page: _buildJenisScreen()
       //   ) ;
-      case Routes.kuisScreen:
-        return SlideRouteTransition(
-          animationTo: AnimationTo.left,
-          page: _kuisScreen()
-        );
+      // case Routes.kuisScreen:
+      //   return SlideRouteTransition(
+      //     animationTo: AnimationTo.left,
+      //     page: _kuisScreen()
+      //   );
 
       case Routes.bukuNapzaScreen:
         return SlideRouteTransition(
@@ -39,6 +41,18 @@ class RouteGenerator {
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
           page: _buildJenisNapzaScreen()
+        );
+
+      case Routes.kuisScreen:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildKuisScreen()
+        );
+      
+      case Routes.detailJenisNapza:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildDetailJenisNapza(settings.arguments)
         );
       default: 
       return MaterialPageRoute<dynamic>(builder: (_) => _buildErrorScreen());
@@ -62,5 +76,18 @@ class RouteGenerator {
 
   static Widget _buildJenisNapzaScreen() {
     return JenisNapzaScreen();
+  }
+
+  static Widget _buildKuisScreen() {
+    return QuizScreen();
+  }
+
+  static Widget _buildDetailJenisNapza(dynamic arguments) {
+    String napza = arguments['napza'];
+    List efek = arguments['efek'];
+    return DetailJenisNapzaScreen(
+      efek: efek,
+      napza: napza,
+    );
   }
 }
