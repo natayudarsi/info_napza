@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:info_napza/category_card.dart';
 import 'package:info_napza/common/config/screen_config.dart';
+import 'package:info_napza/common/routing/routes.dart';
+import 'package:info_napza/presentation/widget/book_card.dart';
 import 'package:info_napza/presentation/widget/pdf_viewer.dart';
 // import 'package:info_napza/bottom_navbar.dart';
 import 'package:info_napza/search_bar.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 
-class BukuNapzaScreen extends StatefulWidget{
+class BukuNapzaScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _BukuNapzaScreenState();
-
 }
 
 class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
   PDFDocument document;
 
-  Future<void> _getDocument(String idDocument) async{
+  Future<void> _getDocument(String idDocument) async {
     document = await PDFDocument.openAsset('assets/pdf/$idDocument.pdf');
   }
 
@@ -32,131 +34,196 @@ class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            height: size.height ,
-            decoration: BoxDecoration(
-              color: Color(0xFFC7B8F5),
-              image: DecorationImage(
-                image: AssetImage("assets/images/meditation_bg.png"),
-                fit: BoxFit.fitWidth,
+            height: size.height * .45,
+            color: Colors.pink[100],
+            child: Image.asset(
+              'assets/images/Artwork-3.jpg',
+              width: size.width,
+              fit: BoxFit.fill,
+            ),
+          ),
+          Align(
+          alignment: Alignment.topLeft,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: Container(
+              margin: EdgeInsets.only(
+                  top: size.height * 0.05, left: size.width * 0.05),
+              alignment: Alignment.center,
+              height: 52,
+              width: 52,
+              decoration:
+                  BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+              // child: SvgPicture.asset('assets/icons/menu.svg'),
+              child: Icon(
+                IconData(58848, fontFamily: 'MaterialIcons', matchTextDirection: true)
               ),
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
+        ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+                padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+                height: size.height * .65,
+                decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(40))),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    SizedBox(
-                      height: size.height * 0.05,
+                    BookCard(
+                      title: "Raih Prestasi Tanpa Narkoba",
+                      // svgSrc: "assets/icons/Hamburger.svg",
+                      pictureSrc: "assets/images/buku1.png",
+                      press: () async {
+                        document =
+                            await PDFDocument.openAsset('assets/pdf/1.pdf');
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return BookViewScreen(document: document,title: "Raih Prestasi Tanpa Narkoba",);
+                        }));
+                      },
                     ),
-                    Text(
-                      "Buku Napza",
-                      style: Theme.of(context)
-                          .textTheme
-                          .display1
-                          .copyWith(fontWeight: FontWeight.w900),
+                    BookCard(
+                      title: "Awas! Narkoba Masuk Desa",
+                      // svgSrc: "assets/icons/Hamburger.svg",
+                      pictureSrc: "assets/images/buku2.png",
+                      press: () async {
+                        document =
+                            await PDFDocument.openAsset('assets/pdf/2.pdf');
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return BookViewScreen(document: document, title: "Awas! Narkoba Masuk Desa");
+                        }));
+                      },
                     ),
-                    // SizedBox(height: 10),
-                    // Text(
-                    //   "3-10 MIN Course",
-                    //   style: TextStyle(fontWeight: FontWeight.bold),
-                    // ),
-                    // SizedBox(height: 10),
-                    // SizedBox(
-                    //   width: size.width * .6, // it just take 60% of total width
-                    //   child: Text(
-                    //     "Live happier and healthier by learning the fundamentals of meditation and mindfulness",
-                    //   ),
-                    // ),
-                    // SizedBox(height: 20),
-                    // Text(
-                    //   "Meditation",
-                    //   style: Theme.of(context)
-                    //       .textTheme
-                    //       .title
-                    //       .copyWith(fontWeight: FontWeight.bold),
-                    // ),
-                    
-                    
+                    BookCard(
+                      title: "Keluarga Sehat Tanpa Narkoba",
+                      // svgSrc: "assets/icons/Hamburger.svg",
+                      pictureSrc: "assets/images/buku3.png",
+                      press: () async {
+                        document =
+                            await PDFDocument.openAsset('assets/pdf/3.pdf');
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return BookViewScreen(document: document, title: "Keluarga Sehat Tanpa Narkoba",);
+                        }));
+                      },
+                    ),
                   ],
+                )
+                // child : GridView.count(
+                //   crossAxisCount: 3,
+                //   // childAspectRatio: .85,
+                //   // crossAxisSpacing: 5,
+                //   // mainAxisSpacing: 5,
+                //   children: <Widget>[
+                //     BookCard(
+                //       title: "Jenis Napza",
+                //       svgSrc: "assets/icons/Hamburger.svg",
+                //       press: () {
+                //         Navigator.of(context).pushNamed(Routes.jenisNapzaScreen);
+                //       },
+                //     ),
+                //     BookCard(
+                //       title: "Buku-buku Napza",
+                //       svgSrc: "assets/icons/Excrecises.svg",
+                //       press: () {
+                //         Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
+                //       },
+                //     ),
+                //     BookCard(
+                //       title: "Video Napza",
+                //       svgSrc: "assets/icons/Meditation.svg",
+                //       press: () {
+
+                //       },
+                //     ),
+
+                //   ],
+                // )
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: size.height * 0.15),
-            // color: Colors.red,
-            child: ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (context, index){
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: size.width * 0.05
-                            
-                            ),
-                          // padding: EdgeInsets.all(10),
-                          height: 90,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                offset: Offset(0, 17),
-                                blurRadius: 23,
-                                spreadRadius: -13,
-                                color: Color(0xFFE6E6E6),
-                              ),
-                            ],
-                          ),
-                          child: RaisedButton(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                            onPressed: ()async {
-
-                              document = await PDFDocument.openAsset('assets/pdf/${index+1}.pdf');
-
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return BookViewScreen(document: document);
-                                })
-                              );
-                            },
-                                                      child: Row(
-                              children: <Widget>[
-                                SvgPicture.asset(
-                                  "assets/icons/Meditation_women_small.svg",
-                                ),
-                                SizedBox(width: 20),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        "Basic ${index+1}",
-                                        style: Theme.of(context).textTheme.subtitle,
-                                      ),
-                                      Text("Start your deepen you practice")
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: SvgPicture.asset("assets/icons/Lock.svg"),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      }
-                    ),
           )
+          // Container(
+          //   margin: EdgeInsets.only(top: size.height * 0.15),
+          //   // color: Colors.red,
+          //   child: ListView.builder(
+          //             itemCount: 3,
+          //             itemBuilder: (context, index){
+          //               return Container(
+          //                 margin: EdgeInsets.symmetric(
+          //                   vertical: 10,
+          //                   horizontal: size.width * 0.05
+
+          //                   ),
+          //                 // padding: EdgeInsets.all(10),
+          //                 height: 90,
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.white,
+          //                   borderRadius: BorderRadius.circular(13),
+          //                   boxShadow: [
+          //                     BoxShadow(
+          //                       offset: Offset(0, 17),
+          //                       blurRadius: 23,
+          //                       spreadRadius: -13,
+          //                       color: Color(0xFFE6E6E6),
+          //                     ),
+          //                   ],
+          //                 ),
+          //                 child: RaisedButton(
+          //                   color: Colors.white,
+          //                   shape: RoundedRectangleBorder(
+          //                     borderRadius: BorderRadius.circular(18.0),
+          //                   ),
+          //                   onPressed: ()async {
+
+          //                     document = await PDFDocument.openAsset('assets/pdf/${index+1}.pdf');
+
+          //                     Navigator.push(
+          //                       context,
+          //                       MaterialPageRoute(builder: (context) {
+          //                         return BookViewScreen(document: document);
+          //                       })
+          //                     );
+          //                   },
+          //                                             child: Row(
+          //                     children: <Widget>[
+          //                       SvgPicture.asset(
+          //                         "assets/icons/Meditation_women_small.svg",
+          //                       ),
+          //                       SizedBox(width: 20),
+          //                       Expanded(
+          //                         child: Column(
+          //                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //                           crossAxisAlignment: CrossAxisAlignment.start,
+          //                           children: <Widget>[
+          //                             Text(
+          //                               "Basic ${index+1}",
+          //                               style: Theme.of(context).textTheme.subtitle,
+          //                             ),
+          //                             Text("Start your deepen you practice")
+          //                           ],
+          //                         ),
+          //                       ),
+          //                       Padding(
+          //                         padding: EdgeInsets.all(10),
+          //                         child: SvgPicture.asset("assets/icons/Lock.svg"),
+          //                       ),
+          //                     ],
+          //                   ),
+          //                 ),
+          //               );
+          //             }
+          //           ),
+          // )
         ],
       ),
     );
