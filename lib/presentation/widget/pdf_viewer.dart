@@ -4,8 +4,9 @@ import 'package:native_pdf_view/native_pdf_view.dart';
 
 class BookViewScreen extends StatefulWidget {
   final PDFDocument document;
+  final String title;
 
-  BookViewScreen({this.document});
+  BookViewScreen({this.document, this.title});
 
   @override
   State<StatefulWidget> createState() => _BookViewScreenState();
@@ -37,10 +38,13 @@ class _BookViewScreenState extends State<BookViewScreen> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
+    debugShowCheckedModeBanner: false,
         theme: ThemeData(primaryColor: Colors.white),
         home: Scaffold(
+          
           appBar: AppBar(
-            title: Text('PdfView example'),
+            // backgroundColor: Colors.black,
+            title: Expanded(child: Text(widget.title)),
             actions: <Widget>[
               // IconButton(
               //   icon: Icon(Icons.navigate_before),
@@ -52,10 +56,11 @@ class _BookViewScreenState extends State<BookViewScreen> {
               //   },
               // ),
               Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 alignment: Alignment.center,
                 child: Text(
                   '$_actualPageNumber/$jumlahHalaman',
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 22, ),
                 ),
               ),
               // IconButton(
