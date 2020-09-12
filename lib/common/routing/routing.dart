@@ -85,9 +85,13 @@ class RouteGenerator {
   static Widget _buildDetailJenisNapza(dynamic arguments) {
     String napza = arguments['napza'];
     List efek = arguments['efek'];
+    String name = arguments['name'];
+    String picture = arguments['picture'];
     return DetailJenisNapzaScreen(
       efek: efek,
       napza: napza,
+      name: name,
+      picture: picture,
     );
   }
 }
