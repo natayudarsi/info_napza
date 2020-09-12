@@ -16,6 +16,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context)
+      .size;
     return Container(
       margin: EdgeInsets.all(30),
       decoration: BoxDecoration(
@@ -35,14 +37,21 @@ class CategoryCard extends StatelessWidget {
         child: InkWell(
           onTap: press,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              svgSrc != null ? 
-                SvgPicture.asset(svgSrc) : 
-                Image.asset(pictureSrc,
-                  height: 50,
-                  fit: BoxFit.fill,),
-              SizedBox(height: 10,),
+              Container(
+                // color: Colors.red,
+                height: size.height * 0.12,
+                child: Image.asset(
+                  pictureSrc
+                ),
+              ),
+              // svgSrc != null ? 
+              //   SvgPicture.asset(svgSrc) : 
+              //   Image.asset(pictureSrc,
+              //     height: 50,
+              //     fit: BoxFit.fill,),
+              // SizedBox(height: 10,),
               Text(
                 title,
                 textAlign: TextAlign.center,

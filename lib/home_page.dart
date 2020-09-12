@@ -34,14 +34,13 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
       // bottomNavigationBar: BottomNavBar(),
       body: Stack(
         children: <Widget>[
+          
           Container(
             height: size.height * .45,
-            decoration: BoxDecoration(
-              color: Color(0xFFF5CEBB),
-              image: DecorationImage(
-                alignment: Alignment.centerLeft,
-                image: AssetImage('assets/images/undraw_pilates_gpdb.png'),
-              )
+            child : Image.asset(
+              'assets/images/Artwork-1.jpg',
+              width: size.width,
+              fit: BoxFit.fill,
             ),
           ),
           Align(
@@ -60,21 +59,24 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                       children: <Widget>[
                         CategoryCard(
                           title: "Jenis Napza",
-                          svgSrc: "assets/icons/Hamburger.svg",
+                          // svgSrc: "assets/icons/Hamburger.svg",
+                          pictureSrc: 'assets/images/phylogenetics.png',
                           press: () {
                             Navigator.of(context).pushNamed(Routes.jenisNapzaScreen);
                           },
                         ),
                         CategoryCard(
-                          title: "Buku-buku Napza",
-                          svgSrc: "assets/icons/Excrecises.svg",
+                          title: "Buku Napza",
+                          // svgSrc: "assets/icons/Excrecises.svg",
+                          pictureSrc: 'assets/images/book.png',
                           press: () {
                             Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
                           },
                         ),
                         CategoryCard(
                           title: "Video Napza",
-                          svgSrc: "assets/icons/Meditation.svg",
+                          // svgSrc: "assets/icons/Meditation.svg",
+                          pictureSrc: 'assets/images/youtube.png',
                           press: () {
                             // Navigator.push(
                             //   context,
@@ -86,7 +88,8 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                         ),
                         CategoryCard(
                           title: "Kuis",
-                          svgSrc: "assets/icons/yoga.svg",
+                          // svgSrc: "assets/icons/yoga.svg",
+                          pictureSrc: 'assets/images/examination.png',
                           press: () {
                             Navigator.of(context).pushNamed(Routes.kuisScreen);
                           },
