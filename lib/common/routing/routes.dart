@@ -5,4 +5,5 @@ class Routes {
   static const String kuisScreen = '/kuis';
   static const String videoScreen = '/video';
   static const String detailJenisNapza = '/detailJenisNapza';
+  static const String kuisScreenStart ='/kuisScreen';
 }

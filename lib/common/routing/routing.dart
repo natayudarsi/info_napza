@@ -8,6 +8,8 @@ import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dar
 import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/quiz_screen.dart';
+import 'package:info_napza/presentation/screens/quiz_screen/start_quiz.dart';
+import 'package:info_napza/presentation/screens/video_napza/video_napza_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
 
@@ -54,6 +56,17 @@ class RouteGenerator {
           animationTo: AnimationTo.left,
           page: _buildDetailJenisNapza(settings.arguments)
         );
+
+      case Routes.videoScreen:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildVideoScreen()
+        );
+      case Routes.kuisScreenStart:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildKuisScreenStart()
+        );
       default: 
       return MaterialPageRoute<dynamic>(builder: (_) => _buildErrorScreen());
     }
@@ -93,5 +106,13 @@ class RouteGenerator {
       name: name,
       picture: picture,
     );
+  }
+
+  static Widget _buildVideoScreen() {
+    return VideoNapzaScreen();
+  }
+
+  static Widget _buildKuisScreenStart() {
+    return QuizScreenStart();
   }
 }

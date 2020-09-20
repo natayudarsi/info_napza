@@ -77,7 +77,9 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           title: "Video Napza",
                           // svgSrc: "assets/icons/Meditation.svg",
                           pictureSrc: 'assets/images/youtube.png',
-                          press: () {
+                          press: 
+                          () {
+                            Navigator.of(context).pushNamed(Routes.videoScreen);
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) {
@@ -91,7 +93,7 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           // svgSrc: "assets/icons/yoga.svg",
                           pictureSrc: 'assets/images/examination.png',
                           press: () {
-                            Navigator.of(context).pushNamed(Routes.kuisScreen);
+                            Navigator.of(context).pushNamed(Routes.kuisScreenStart);
                           },
                         ),
                       ],
