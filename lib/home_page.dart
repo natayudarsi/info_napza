@@ -15,14 +15,14 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
   PDFDocument document;
 
 
-  Future<void> _getDocument() async{
-    document = await PDFDocument.openAsset('assets/example.pdf');
-  }
+  // Future<void> _getDocument() async{
+  //   document = await PDFDocument.openAsset('assets/example.pdf');
+  // }
 
   @override
   void initState() {
     super.initState();
-    _getDocument();
+    // _getDocument();
     print('homepage');
   }
 
@@ -36,7 +36,7 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
         children: <Widget>[
           
           Container(
-            height: size.height * .45,
+            height: size.height * .5,
             child : Image.asset(
               'assets/images/Artwork-1.jpg',
               width: size.width,
@@ -58,7 +58,9 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                       // mainAxisSpacing: 5,
                       children: <Widget>[
                         CategoryCard(
-                          title: "Jenis Napza",
+                          title: "Jenis",
+                          colors: Color(0x1Ab4dd7f),
+                          textColor: Color(0xffb4dd7f),
                           // svgSrc: "assets/icons/Hamburger.svg",
                           pictureSrc: 'assets/images/phylogenetics.png',
                           press: () {
@@ -66,7 +68,9 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           },
                         ),
                         CategoryCard(
-                          title: "Buku Napza",
+                          title: "Buku",
+                          colors: Color(0x1aed7d32),
+                          textColor: Color(0xffed7d32),
                           // svgSrc: "assets/icons/Excrecises.svg",
                           pictureSrc: 'assets/images/book.png',
                           press: () {
@@ -74,12 +78,14 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           },
                         ),
                         CategoryCard(
-                          title: "Video Napza",
+                          title: "Info",
+                          colors: Color(0x1aff5a5a),
+                          textColor: Color(0xffff5a5a),
                           // svgSrc: "assets/icons/Meditation.svg",
                           pictureSrc: 'assets/images/youtube.png',
                           press: 
                           () {
-                            Navigator.of(context).pushNamed(Routes.videoScreen);
+                            // Navigator.of(context).pushNamed(Routes.videoList);
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(builder: (context) {
@@ -90,6 +96,8 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                         ),
                         CategoryCard(
                           title: "Kuis",
+                          colors: Color(0x1a72ccc5),
+                          textColor: Color(0xff72ccc5),
                           // svgSrc: "assets/icons/yoga.svg",
                           pictureSrc: 'assets/images/examination.png',
                           press: () {

@@ -10,7 +10,13 @@ class JenisNapzaScreen extends StatefulWidget {
 }
 
 class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
-  List<String> images = ['assets/images/ganja.jpeg', 'assets/images/kokain.jpg', 'assets/images/ekstasi.png', 'assets/images/morphine-pills.jpg', 'assets/images/morphine-pills.jpg'];
+  List<String> images = [
+    'assets/images/ganja.jpeg',
+    'assets/images/kokain.jpg',
+    'assets/images/ekstasi.png',
+    'assets/images/morphine-pills.jpg',
+    'assets/images/morphine-pills.jpg'
+  ];
   List<String> name = ['Sabu', 'Cocain', 'Ekstasy', 'Morfin', 'Obat Penenang'];
   List<String> detailName = [shabu, cocain, ekstasy, morfin, obatPenenang];
   List<dynamic> efekNapza = [
@@ -28,7 +34,7 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            height: size.height * .45,
+            height: size.height * .5,
             color: Colors.pink[100],
             child: Image.asset(
               'assets/images/Artwork-2.jpg',
@@ -51,7 +57,7 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                 decoration:
                     BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                 // child: SvgPicture.asset('assets/icons/menu.svg'),
-                child: Icon(IconData(58848,
+                child: Icon(const IconData(58848,
                     fontFamily: 'MaterialIcons', matchTextDirection: true)),
               ),
             ),
@@ -91,20 +97,47 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                         },
                         child: Stack(
                           children: <Widget>[
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image.asset(
-                                images[index],
-                                width: size.width,
-                                // height: 50,
-                                fit: BoxFit.none,
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(images[index]),
+                                  
+                                ),
+                              ),
+                              // child: Image.asset(
+                              //   images[index],
+                              //   width: size.width,
+                              //   // height: 50,
+                              //   fit: BoxFit.none,
+                              // ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                        begin: Alignment.topRight,
+                                        end: Alignment.bottomLeft,
+                                        colors: [
+                                      Colors.transparent,
+                                      Colors.black
+                                    ]),
+                                ),
                               ),
                             ),
-                            Align(
+                            Container(
                               alignment: Alignment.centerLeft,
                               child: Container(
+                                // decoration: BoxDecoration(
+                                //     gradient: LinearGradient(
+                                //         begin: Alignment.topRight,
+                                //         end: Alignment.bottomLeft,
+                                //         colors: [
+                                //       Colors.transparent,
+                                //       Colors.black
+                                //     ])),
                                 margin:
-                                    EdgeInsets.only(left: size.width * 0.03),
+                                    EdgeInsets.only(left: size.width * 0.1),
                                 alignment: Alignment.centerLeft,
                                 height: 52,
                                 width: size.width * 0.7,
@@ -116,6 +149,7 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                       .textTheme
                                       .headline5
                                       .copyWith(
+                                          fontFamily: 'Poppins-SemiBold',
                                           fontWeight: FontWeight.w900,
                                           color: Colors.white),
                                 ),
@@ -132,7 +166,7 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     shape: BoxShape.circle),
-                                child: Icon(IconData(58849,
+                                child: Icon(const IconData(58849,
                                     fontFamily: 'MaterialIcons',
                                     matchTextDirection: true)),
                               ),

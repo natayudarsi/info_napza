@@ -34,7 +34,7 @@ class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            height: size.height * .45,
+            height: size.height * .5,
             color: Colors.pink[100],
             child: Image.asset(
               'assets/images/Artwork-3.jpg',
@@ -57,7 +57,7 @@ class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
               decoration:
                   BoxDecoration(color: Colors.white, shape: BoxShape.circle),
               // child: SvgPicture.asset('assets/icons/menu.svg'),
-              child: Icon(
+              child: Icon(const
                 IconData(58848, fontFamily: 'MaterialIcons', matchTextDirection: true)
               ),
             ),

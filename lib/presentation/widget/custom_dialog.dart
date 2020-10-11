@@ -32,7 +32,7 @@ class CustomDialog extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
               border: Border.all(
-                  color: title == 'Benar' ? Colors.teal : Colors.red,
+                  color: title == 'Salah' ? Colors.red : Colors.teal,
                   width: 2)),
           padding: EdgeInsets.only(
               top: 60, left: 20, right: 20), // spacing inside the box
@@ -44,7 +44,7 @@ class CustomDialog extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
-                    color: title == 'Benar' ? Colors.teal : Colors.red),
+                    color: title == 'Salah' ? Colors.red : Colors.teal),
               ),
               SizedBox(
                 height: 16,
@@ -63,7 +63,7 @@ class CustomDialog extends StatelessWidget {
                       btnText,
                       style: TextStyle(
                           fontSize: 18,
-                          color: title == 'Benar' ? Colors.teal : Colors.red),
+                          color: title == 'Salah' ? Colors.red : Colors.teal),
                     ),
                     onPressed: btnPressed,
                   ),
@@ -76,13 +76,13 @@ class CustomDialog extends StatelessWidget {
           // Top Circle with icon
           maxRadius: 40.0,
           child: Icon(
-            title == 'Benar'
-                ? IconData(58826, fontFamily: 'MaterialIcons')
-                : IconData(58829, fontFamily: 'MaterialIcons'),
+            title == 'Salah'
+                ? const IconData(58829, fontFamily: 'MaterialIcons')
+                : const IconData(58826, fontFamily: 'MaterialIcons'),
             size: 40,
             color: Colors.white,
           ),
-          backgroundColor: title == 'Benar' ? Colors.teal : Colors.red,
+          backgroundColor: title == 'Salah' ? Colors.red : Colors.teal,
         ),
       ],
     );

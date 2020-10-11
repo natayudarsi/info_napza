@@ -42,7 +42,7 @@ class DetailJenisNapzaScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headline4
-                  .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                  .copyWith(fontWeight: FontWeight.w600, color: Colors.white, fontFamily: 'Poppins-SemiBold'),
             ),
           ),
         ),
@@ -61,7 +61,7 @@ class DetailJenisNapzaScreen extends StatelessWidget {
               decoration:
                   BoxDecoration(color: Colors.white, shape: BoxShape.circle),
               // child: SvgPicture.asset('assets/icons/menu.svg'),
-              child: Icon(
+              child: Icon(const
                 IconData(58848, fontFamily: 'MaterialIcons', matchTextDirection: true)
               ),
             ),
@@ -82,9 +82,10 @@ class DetailJenisNapzaScreen extends StatelessWidget {
                 children: <Widget>[
                   RichText(
                     text: TextSpan(
-                        text: 'Apa sih ',
+                        text: 'Apa itu ',
                         style: Theme.of(context).textTheme.headline4.copyWith(
-                              fontWeight: FontWeight.w600,
+                              // fontWeight: FontWeight.w600,
+                              color: Colors.black
                             ),
                         children: <TextSpan>[
                           TextSpan(
@@ -95,7 +96,7 @@ class DetailJenisNapzaScreen extends StatelessWidget {
                                   .copyWith(
                                       fontWeight: FontWeight.w700,
                                       color: Colors.black)),
-                          TextSpan(text: ' itu ?')
+                          TextSpan(text: ' ?')
                         ]),
                   ),
                   SizedBox(
@@ -112,7 +113,8 @@ class DetailJenisNapzaScreen extends StatelessWidget {
                     text: TextSpan(
                         text: 'Efek ',
                         style: Theme.of(context).textTheme.headline4.copyWith(
-                              fontWeight: FontWeight.w600,
+                              // fontWeight: FontWeight.w600,
+                              color: Colors.black
                             ),
                         children: <TextSpan>[
                           TextSpan(
@@ -121,6 +123,7 @@ class DetailJenisNapzaScreen extends StatelessWidget {
                                   .textTheme
                                   .headline4
                                   .copyWith(
+                                    fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w800,
                                       color: Colors.black)),
                         ]),
@@ -247,7 +250,7 @@ class UnorderedListItem extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16,fontFamily: 'Roboto'),
           ),
         ),
       ],

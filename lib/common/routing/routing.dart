@@ -9,6 +9,7 @@ import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_s
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/quiz_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/start_quiz.dart';
+import 'package:info_napza/presentation/screens/video_napza/video_list.dart';
 import 'package:info_napza/presentation/screens/video_napza/video_napza_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
@@ -57,15 +58,21 @@ class RouteGenerator {
           page: _buildDetailJenisNapza(settings.arguments)
         );
 
-      case Routes.videoScreen:
+      case Routes.videoList:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
-          page: _buildVideoScreen()
+          page: _buildVideoListScreen()
         );
       case Routes.kuisScreenStart:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
           page: _buildKuisScreenStart()
+        );
+
+      case Routes.videoScreen:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildVideoScreen()
         );
       default: 
       return MaterialPageRoute<dynamic>(builder: (_) => _buildErrorScreen());
@@ -110,6 +117,10 @@ class RouteGenerator {
 
   static Widget _buildVideoScreen() {
     return VideoNapzaScreen();
+  }
+
+  static Widget _buildVideoListScreen() {
+    return VideoNapzaListScreen();
   }
 
   static Widget _buildKuisScreenStart() {

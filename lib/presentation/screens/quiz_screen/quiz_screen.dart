@@ -32,62 +32,41 @@ class _QuizScreenState extends State<QuizScreen> {
     super.dispose();
   }
 
-  void _showJawabanBenar(double height, double width) {
+  void _showSelesai() {
     showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          title: new Text(
-            "Jawaban Salah",
-          ),
-          content: Container(
-              height: height * 0.5,
-              width: width * 0.9,
-              child: Text(kuis[_indexSoalKe].penjelasan)),
-          actions: <Widget>[
-            new FlatButton(
-              child: Text("Soal Selanjutnya"),
-              onPressed: () {
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return CustomDialog(
+              title: 'Selesai',
+              content: 'Anda telah menyelesaikan soal kuis dengan jumlah benar ',
+              btnText: 'Kembali ke Menu',
+              // negativeBtnText: 'd',
+              btnPressed: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+              });
+        });
   }
 
-    void _showJawabanSalah(double height, double width) {
+  void _showPenjelasan() {
     showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          title: new Text(
-            "Jawaban Salah",
-          ),
-          content: Container(
-              height: height * 0.5,
-              width: width * 0.9,
-              child: Text(kuis[_indexSoalKe].penjelasan)),
-          actions: <Widget>[
-            new FlatButton(
-              child: Text("Soal Selanjutnya"),
-              onPressed: () {
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return CustomDialog(
+              title: checkJawaban(_answer),
+              content: kuis[_indexSoalKe].penjelasan,
+              btnText: 'Soal Selanjutnya >>',
+              // negativeBtnText: 'd',
+              btnPressed: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+                setState(() {
+                  _indexSoalKe += 1;
+                  _answer = null;
+                });
+              });
+        });
   }
 
   void _showDialogNotChose() {
@@ -109,11 +88,11 @@ class _QuizScreenState extends State<QuizScreen> {
         });
   }
 
-  bool checkJawaban(String jawaban) {
-    if(jawaban == kuis[_indexSoalKe].jawabanBenar){
-      return true;
+  String checkJawaban(String jawaban) {
+    if (jawaban == kuis[_indexSoalKe].jawabanBenar) {
+      return 'Benar';
     } else {
-      return false;
+      return 'Salah';
     }
   }
 
@@ -124,32 +103,43 @@ class _QuizScreenState extends State<QuizScreen> {
       body: Stack(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.only(
+              top: size.height * .05,
+              right: size.width * .05,
+              left: size.width * .05
+            ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xffffc101), Color(0xffff5728)]),
+            ),
             height: size.height * .45,
-            color: Colors.amber,
-            child: Center(
-                child: RichText(
-              text: TextSpan(
-                text: 'Soal ${kuis[_indexSoalKe].nomor}\n\n',
-                style: const TextStyle(
-                  color: Colors.brown,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32
-                ),
-                children: [
-                  TextSpan(
-                    text: kuis[_indexSoalKe].soal,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      
+            width: size.width,
+            // color: Colors.amber,
+            // child: Center(
+              child: RichText(
+                text: TextSpan(
+                  text: 'Soal ${kuis[_indexSoalKe].nomor}\n\n',
+                  style: const TextStyle(
+                      color: Color(0xff571243),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins-SemiBold',
+                      fontSize: 32),
+                  children: [
+                    TextSpan(
+                      text: kuis[_indexSoalKe].soal,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 22,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            ),
+            // ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -167,40 +157,40 @@ class _QuizScreenState extends State<QuizScreen> {
                     answer: kuis[_indexSoalKe].jawabanA,
                     press: () {
                       setState(() {
-                        _answer = 'a';
+                        _answer = 'A';
                       });
                     },
-                    isActive: _answer == 'a',
+                    isActive: _answer == 'A',
                   ),
                   AnswerWidget(
                     choice: 'B',
                     answer: kuis[_indexSoalKe].jawabanB,
                     press: () {
                       setState(() {
-                        _answer = 'b';
+                        _answer = 'B';
                       });
                     },
-                    isActive: _answer == 'b',
+                    isActive: _answer == 'B',
                   ),
                   AnswerWidget(
                     choice: 'C',
                     answer: kuis[_indexSoalKe].jawabanC,
                     press: () {
                       setState(() {
-                        _answer = 'c';
+                        _answer = 'C';
                       });
                     },
-                    isActive: _answer == 'c',
+                    isActive: _answer == 'C',
                   ),
                   AnswerWidget(
                     choice: 'D',
                     answer: kuis[_indexSoalKe].jawabanD,
                     press: () {
                       setState(() {
-                        _answer = 'd';
+                        _answer = 'D';
                       });
                     },
-                    isActive: _answer == 'd',
+                    isActive: _answer == 'D',
                   ),
                   Container(
                     height: size.height * .07,
@@ -212,28 +202,21 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: RaisedButton(
                       onPressed: () async {
                         if (_answer != null) {
-                          // checkJawaban(_answer);
-                          // _showJawabanBenar(size.height, size.width);
-                          showDialog(context: context,
-                          builder: (context) {
-                            return CustomDialog(
-                              title: 'Benr', 
-                              content: kuis[_indexSoalKe].penjelasan, 
-                              btnText: 'Soal Selanjutnya >>', 
-                              // negativeBtnText: 'd', 
-                              btnPressed: (){});
+                          if (_indexSoalKe == 19) {
+                            _showSelesai();
+                          } else {
+                            _showPenjelasan();
                           }
-                          );
                         } else {
                           _showDialogNotChose();
                         }
                       },
-                      color: Colors.lightBlue[200],
+                      color: Color(0xff72ccc5),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
                       child: Text(
-                        'Next',
-                        style: TextStyle(fontSize: 18),
+                        'NEXT',
+                        style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
                   )
@@ -243,7 +226,6 @@ class _QuizScreenState extends State<QuizScreen> {
           )
         ],
       ),
-      
     );
   }
 }

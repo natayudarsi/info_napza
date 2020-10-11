@@ -6,32 +6,34 @@ class CategoryCard extends StatelessWidget {
   final String title;
   final String pictureSrc;
   final Function press;
-  const CategoryCard({
-    Key key,
-    this.pictureSrc,
-    this.svgSrc,
-    this.title,
-    this.press,
-  }) : super(key: key);
+  final Color colors;
+  final Color textColor;
+  const CategoryCard(
+      {Key key,
+      this.pictureSrc,
+      this.svgSrc,
+      this.title,
+      this.press,
+      this.colors,
+      this.textColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context)
-      .size;
+    var size = MediaQuery.of(context).size;
     return Container(
+      padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(45),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0,10),
-            blurRadius: 12,
-            // spreadRadius: 12,
-            color: Colors.grey[400]
-          )
-        ]
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(45),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, 10),
+                blurRadius: 12,
+                // spreadRadius: 12,
+                color: Colors.grey[400])
+          ]),
       child: Material(
         borderRadius: BorderRadius.circular(45),
         child: InkWell(
@@ -40,14 +42,16 @@ class CategoryCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
+                padding: EdgeInsets.all(10),
                 // color: Colors.red,
+                decoration: BoxDecoration(
+                    color: colors, 
+                    borderRadius: BorderRadius.circular(50)),
                 height: size.height * 0.12,
-                child: Image.asset(
-                  pictureSrc
-                ),
+                child: Image.asset(pictureSrc),
               ),
-              // svgSrc != null ? 
-              //   SvgPicture.asset(svgSrc) : 
+              // svgSrc != null ?
+              //   SvgPicture.asset(svgSrc) :
               //   Image.asset(pictureSrc,
               //     height: 50,
               //     fit: BoxFit.fill,),
@@ -55,10 +59,7 @@ class CategoryCard extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context)
-                  .textTheme
-                  .title
-                  .copyWith(fontSize: 15),
+                style: TextStyle(fontSize: 15, color: textColor, fontFamily: 'Poppins-SemiBold'),
               )
             ],
           ),
@@ -90,8 +91,8 @@ class CategoryCard extends StatelessWidget {
     //           child: Column(
     //             children: <Widget>[
     //               Spacer(),
-    //                 svgSrc != null ? 
-    //                   SvgPicture.asset(svgSrc) : 
+    //                 svgSrc != null ?
+    //                   SvgPicture.asset(svgSrc) :
     //                   Image.asset(pictureSrc,
     //                     height: 120,
     //                     fit: BoxFit.fill,),

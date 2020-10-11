@@ -18,11 +18,20 @@ class QuizScreenStart extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: size.height * .1),
           width: size.width ,
           height: size.height,
-          color: Colors.amberAccent,
+          // color: Colors.red,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                      Color(0xffffc101),
+                                      Color(0xffff5728)
+                                    ]),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text('KUIS', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900, color: Colors.purple),),
+              Text('KUIS', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900, color: Color(0xff571243)),),
               Container(
                 width: size.width * .8,
                 height: size.height * .4,
@@ -35,34 +44,49 @@ class QuizScreenStart extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Text('Kamu akan memulai Kuis dari Aplikasi Informasi NAPZA. Akan ada 20 Soal yang harus kamu jawab dan pilihlah jawaban yang menurutmu benar',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
-                      
-                    ),
-                    textAlign: TextAlign.center,
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: size.height * .02
+                      ),
+                      child: Text('Kamu akan memulai Kuis dari Aplikasi Informasi NAPZA. Akan ada 20 Soal yang harus kamu jawab dan pilihlah jawaban yang menurutmu benar',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        
+                      ),
+                      textAlign: TextAlign.center,
+                      ),
                     ),
                     RaisedButton(
-
+                      padding: EdgeInsets.symmetric(
+                        horizontal: size.width * .07,
+                        vertical: size.height * .01
+                      ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       onPressed: (){
                         Navigator.of(context).pushNamed(Routes.kuisScreen);
                       },
-                      color: Colors.lightBlueAccent,
-                      child: Text('MULAI',style: TextStyle(color: Colors.white),),
+                      color: Color(0xff72ccc5),
+                      child: Text('MULAI',style: TextStyle(color: Colors.white, fontSize: 22, fontFamily: 'Poppins-SemiBold' ),),
                     )
                   ],
                 ),
               ),
-              RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      text: 'Aplikasi\nInformasi\n',
-                      style: TextStyle(fontSize: 25),
-                      children: <TextSpan>[
-                        
-                        TextSpan(text: 'NAPZA', style: TextStyle(fontWeight: FontWeight.w700))
-                      ])),
+              Container(
+                margin: EdgeInsets.only(
+                  top: size.height * .05
+                ),
+                child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: 'Buku Saku\n',
+                        style: TextStyle(fontSize: 25, color: Colors.white70),
+                        children: <TextSpan>[
+                          
+                          TextSpan(text: 'NAPZA', style: TextStyle(fontWeight: FontWeight.w700))
+                        ])),
+              ),
             ],
           ),
         ),
@@ -81,7 +105,7 @@ class QuizScreenStart extends StatelessWidget {
               decoration:
                   BoxDecoration(color: Colors.white, shape: BoxShape.circle),
               // child: SvgPicture.asset('assets/icons/menu.svg'),
-              child: Icon(
+              child: Icon(const
                 IconData(58848,
                     fontFamily: 'MaterialIcons', matchTextDirection: true),
               ),
