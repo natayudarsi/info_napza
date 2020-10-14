@@ -5,27 +5,91 @@ import 'package:info_napza/common/routing/routes.dart';
 import 'package:info_napza/model/jenis_napza_model.dart';
 
 class JenisNapzaScreen extends StatefulWidget {
+  final String jenis;
+
+  const JenisNapzaScreen({Key key, this.jenis}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _JenisNapzaScreenState();
 }
 
 class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
-  List<String> images = [
+  List<String> images;
+  List<String> imagesNarkotika = [
     'assets/images/ganja.jpeg',
-    'assets/images/kokain.jpg',
-    'assets/images/ekstasi.png',
     'assets/images/morphine-pills.jpg',
-    'assets/images/morphine-pills.jpg'
+    'assets/images/kokain.jpg'
   ];
-  List<String> name = ['Sabu', 'Cocain', 'Ekstasy', 'Morfin', 'Obat Penenang'];
-  List<String> detailName = [shabu, cocain, ekstasy, morfin, obatPenenang];
-  List<dynamic> efekNapza = [
-    efekShabu,
-    efekCocain,
+
+  List<String> imagesPsikotropika = [
+    'assets/images/ekstasi.png',
+    'assets/images/clobazam.jpg',
+    'assets/images/phenorbabital.jpg',
+    'assets/images/amfetamin.jpg'
+  ];
+
+  List<String> imagesZatAdiktif = [
+    'assets/images/wiski.jpg',
+    'assets/images/anggur-kolosom.jpg',
+    'assets/images/bir.jpg',
+    'assets/images/arak.jpg'
+  ];
+
+  List<String> nama;
+  List<String> narkotika = ['Ganja', 'Morfin', 'Kokain'];
+  List<String> psikotropika = [
+    'Ekstasy',
+    'Clobazam',
+    'Phenorbabital',
+    'Amfetamin'
+  ];
+  List<String> zatAdiktif = ['Wisky', 'Anggur Kolosom', 'Bir', 'Arak'];
+
+  List<String> detail;
+  List<String> detailNarkotika = [ganja, morfin, cocain];
+  List<String> detailPsikotropika = [
+    ekstasy,
+    clobazam,
+    phenorbabital,
+    amfetamin
+  ];
+  List<String> detailZatAdiktif = [wiski, anggurKolosom, bir, arak];
+
+  List<dynamic> efek;
+  List<dynamic> efekNarkotika = [efekGanja, efekMorfin, efekCocain];
+  List<dynamic> efekPsikotropika = [
     efekEkstasy,
-    efekMorfin,
-    efekObatPenenang
+    efekClobazam,
+    efekPhenorbabital,
+    efekAmfetamin
   ];
+
+  List<dynamic> efekZatAdiktif = [
+    efekWiski,
+    efekAnggurKolosom,
+    efekBir,
+    efekArak
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.jenis == 'narkotika') {
+      images = imagesNarkotika;
+      nama = narkotika;
+      detail = detailNarkotika;
+      efek = efekNarkotika;
+    } else if (widget.jenis == 'psikotropika') {
+      images = imagesPsikotropika;
+      nama = psikotropika;
+      detail = detailPsikotropika;
+      efek = efekPsikotropika;
+    } else {
+      images = imagesZatAdiktif;
+      nama = zatAdiktif;
+      detail = detailZatAdiktif;
+      efek = efekZatAdiktif;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,19 +129,23 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: size.height * 0.65,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
-              ),
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
+                padding: EdgeInsets.symmetric(
+                    vertical: size.height * 0.02,
+                    horizontal: size.width * 0.07),
+                height: size.height * 0.65,
+                width: size.width,
+                decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(40))),
+                child: ListView.builder(
+                  itemCount: nama.length,
+                  itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(
-                        horizontal: size.width * 0.1,
                         vertical: size.height * 0.01),
                     height: size.height * .1,
+                    width: size.width,
                     decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(50)),
@@ -86,9 +154,9 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                       child: InkWell(
                         onTap: () {
                           Map payload = {
-                            'napza': detailName[index],
-                            'efek': efekNapza[index],
-                            'name': name[index],
+                            'napza': detail[index],
+                            'efek': efek[index],
+                            'name': nama[index],
                             'picture': images[index]
                           };
                           Navigator.of(context).pushNamed(
@@ -103,7 +171,6 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: AssetImage(images[index]),
-                                  
                                 ),
                               ),
                               // child: Image.asset(
@@ -116,12 +183,12 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   gradient: LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                      Colors.transparent,
-                                      Colors.black
-                                    ]),
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.transparent,
+                                        Colors.black
+                                      ]),
                                 ),
                               ),
                             ),
@@ -136,15 +203,14 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                 //       Colors.transparent,
                                 //       Colors.black
                                 //     ])),
-                                margin:
-                                    EdgeInsets.only(left: size.width * 0.1),
+                                margin: EdgeInsets.only(left: size.width * 0.1),
                                 alignment: Alignment.centerLeft,
                                 height: 52,
                                 width: size.width * 0.7,
                                 // decoration: BoxDecoration(
                                 //     color: Colors.red, shape: BoxShape.circle),
                                 child: Text(
-                                  name[index],
+                                  nama[index],
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline5
@@ -176,77 +242,8 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                       ),
                     ),
                   );
-                },
-              ),
-            ),
+                })),
           )
-          // SafeArea(
-          //   child: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 20),
-          //     child: Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: <Widget>[
-          //         Container(
-          //           margin: EdgeInsets.only(top: size.height * 0.01,bottom: size.height * 0.05),
-          //           alignment: Alignment.center,
-          //             child: Text(
-          //             'Jenis-jenis Napza',
-          //             style: Theme.of(context)
-          //                   .textTheme
-          //                   .display1
-          //                   .copyWith(fontWeight: FontWeight.w900),
-          //           ),
-          //         ),
-          //         // SearchBar(),
-          //         Expanded(
-          //           child: GridView.count(
-          //             crossAxisCount: 2,
-          //             childAspectRatio: .85,
-          //             crossAxisSpacing: 20,
-          //             mainAxisSpacing: 20,
-          //             children: <Widget>[
-          //               CategoryCard(
-          //                 title: "Cocain",
-          //                 pictureSrc: "assets/images/cocain.jpeg",
-          //                 press: () {
-          //                   Map payload = {
-          //                     'napza': cocain,
-          //                     'efek': efekCocain,
-          //                   };
-          //                   Navigator.of(context).pushNamed(Routes.detailJenisNapza, arguments: payload);
-          //                 },
-          //               ),
-          //               CategoryCard(
-          //                 title: "Ectasy",
-          //                 pictureSrc: "assets/images/ectasy.jpeg",
-          //                 press: () {
-          //                 },
-          //               ),
-          //               CategoryCard(
-          //                 title: "Ganja",
-          //                 pictureSrc: "assets/images/ganja.jpeg",
-          //                 press: () {
-          //                 },
-          //               ),
-          //               CategoryCard(
-          //                 title: "Morphine",
-          //                 pictureSrc: "assets/images/morphine.jpeg",
-          //                 press: () {
-          //                 },
-          //               ),
-          //               CategoryCard(
-          //                 title: "Obat Penenang",
-          //                 pictureSrc: "assets/images/obat-penenang.jpeg",
-          //                 press: () {
-          //                 },
-          //               ),
-          //             ],
-          //           )
-          //         )
-          //       ],
-          //     ),
-          //   )
-          // )
         ],
       ),
     );

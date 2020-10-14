@@ -6,10 +6,12 @@ import 'package:info_napza/home_page.dart';
 import 'package:info_napza/main.dart';
 import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
+import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_home_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/quiz_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/start_quiz.dart';
-import 'package:info_napza/presentation/screens/video_napza/video_list.dart';
+import 'package:info_napza/presentation/screens/video_napza/Info_napza_screen.dart';
+// import 'package:info_napza/presentation/screens/video_napza/video_list.dart';
 import 'package:info_napza/presentation/screens/video_napza/video_napza_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
@@ -40,10 +42,10 @@ class RouteGenerator {
           page: _buildBukuNapzaScreen()
         );
 
-      case Routes.jenisNapzaScreen:
+      case Routes.jenisNapzaHomeScreen:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
-          page: _buildJenisNapzaScreen()
+          page: _buildJenisNapzaHomeScreen()
         );
 
       case Routes.kuisScreen:
@@ -58,11 +60,11 @@ class RouteGenerator {
           page: _buildDetailJenisNapza(settings.arguments)
         );
 
-      case Routes.videoList:
-        return SlideRouteTransition(
-          animationTo: AnimationTo.left,
-          page: _buildVideoListScreen()
-        );
+      // case Routes.videoList:
+      //   return SlideRouteTransition(
+      //     animationTo: AnimationTo.left,
+      //     page: _buildVideoListScreen()
+      //   );
       case Routes.kuisScreenStart:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
@@ -73,6 +75,18 @@ class RouteGenerator {
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
           page: _buildVideoScreen()
+        );
+
+      case Routes.infoNapza:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildInfoNapzaScreen()
+        );
+      
+      case Routes.jenisNapza:
+        return SlideRouteTransition(
+          animationTo: AnimationTo.left,
+          page: _buildJenisNapzaScreen(settings.arguments)
         );
       default: 
       return MaterialPageRoute<dynamic>(builder: (_) => _buildErrorScreen());
@@ -94,8 +108,8 @@ class RouteGenerator {
     return BukuNapzaScreen();
   }
 
-  static Widget _buildJenisNapzaScreen() {
-    return JenisNapzaScreen();
+  static Widget _buildJenisNapzaHomeScreen() {
+    return JenisNapzaHomeScreen();
   }
 
   static Widget _buildKuisScreen() {
@@ -119,11 +133,21 @@ class RouteGenerator {
     return VideoNapzaScreen();
   }
 
-  static Widget _buildVideoListScreen() {
-    return VideoNapzaListScreen();
-  }
+  // static Widget _buildVideoListScreen() {
+  //   return VideoNapzaListScreen();
+  // }
 
   static Widget _buildKuisScreenStart() {
     return QuizScreenStart();
+  }
+
+  static Widget _buildInfoNapzaScreen() {
+    return InfoNapzaScreen();
+  }
+
+  static Widget _buildJenisNapzaScreen(String jenis) {
+    return JenisNapzaScreen(
+      jenis: jenis,
+    );
   }
 }

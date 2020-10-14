@@ -64,7 +64,7 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           // svgSrc: "assets/icons/Hamburger.svg",
                           pictureSrc: 'assets/images/phylogenetics.png',
                           press: () {
-                            Navigator.of(context).pushNamed(Routes.jenisNapzaScreen);
+                            Navigator.of(context).pushNamed(Routes.jenisNapzaHomeScreen);
                           },
                         ),
                         CategoryCard(
@@ -85,6 +85,7 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                           pictureSrc: 'assets/images/youtube.png',
                           press: 
                           () {
+                            Navigator.of(context).pushNamed(Routes.infoNapza);
                             // Navigator.of(context).pushNamed(Routes.videoList);
                             // Navigator.push(
                             //   context,
