@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:info_napza/category_card.dart';
-import 'package:info_napza/details_screen.dart';
 import 'package:info_napza/home_page.dart';
-import 'package:info_napza/main.dart';
 import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_home_screen.dart';
@@ -11,7 +8,6 @@ import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.d
 import 'package:info_napza/presentation/screens/quiz_screen/quiz_screen.dart';
 import 'package:info_napza/presentation/screens/quiz_screen/start_quiz.dart';
 import 'package:info_napza/presentation/screens/video_napza/Info_napza_screen.dart';
-// import 'package:info_napza/presentation/screens/video_napza/video_list.dart';
 import 'package:info_napza/presentation/screens/video_napza/video_napza_screen.dart';
 import 'package:info_napza/presentation/widget/error_screen.dart';
 import 'package:info_napza/presentation/widget/slide_transition_widget.dart';
@@ -60,11 +56,6 @@ class RouteGenerator {
           page: _buildDetailJenisNapza(settings.arguments)
         );
 
-      // case Routes.videoList:
-      //   return SlideRouteTransition(
-      //     animationTo: AnimationTo.left,
-      //     page: _buildVideoListScreen()
-      //   );
       case Routes.kuisScreenStart:
         return SlideRouteTransition(
           animationTo: AnimationTo.left,
@@ -96,11 +87,8 @@ class RouteGenerator {
   static Widget _buildHomeScreen() {
     return MyHomePageScreen();
   }
-  
-  static Widget _kuisScreen() {
-    return DetailsScreen();
-  }
-    static Widget _buildErrorScreen() {
+
+  static Widget _buildErrorScreen() {
       return ErrorScreen();
   }
 
@@ -132,10 +120,6 @@ class RouteGenerator {
   static Widget _buildVideoScreen() {
     return VideoNapzaScreen();
   }
-
-  // static Widget _buildVideoListScreen() {
-  //   return VideoNapzaListScreen();
-  // }
 
   static Widget _buildKuisScreenStart() {
     return QuizScreenStart();

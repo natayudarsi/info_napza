@@ -90,11 +90,11 @@ class _JenisNapzaHomeScreenState extends State<JenisNapzaHomeScreen> {
                       jenis: 'Narkotika',
                     ),
                     WidgetNapza(
-                      images:     'assets/images/ekstasi.png',
+                      images: 'assets/images/ekstasi.png',
                       jenis: 'Psikotropika',
                     ),
                     WidgetNapza(
-                      images:     'assets/images/wiski.jpg',
+                      images: 'assets/images/wiski.jpg',
                       jenis: 'Zat Adiktif',
                     )
                   ],

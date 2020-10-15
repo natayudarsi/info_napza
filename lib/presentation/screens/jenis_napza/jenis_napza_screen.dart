@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:info_napza/category_card.dart';
 import 'package:info_napza/common/routing/routes.dart';
+import 'package:info_napza/model/info_napza.dart';
 import 'package:info_napza/model/jenis_napza_model.dart';
+import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
+import 'package:info_napza/presentation/screens/jenis_napza/jenis_list_item.dart';
 
 class JenisNapzaScreen extends StatefulWidget {
   final String jenis;
@@ -70,30 +73,53 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
     efekArak
   ];
 
+  String napza;
+  List kategoriNapza;
+
   @override
   void initState() {
     super.initState();
-    if (widget.jenis == 'narkotika') {
+    if (widget.jenis == 'Narkotika') {
       images = imagesNarkotika;
       nama = narkotika;
       detail = detailNarkotika;
       efek = efekNarkotika;
-    } else if (widget.jenis == 'psikotropika') {
+      napza = InfoNapza.narkoba;
+      kategoriNapza = InfoNapza.jenisNarkoba;
+    } else if (widget.jenis == 'Psikotropika') {
       images = imagesPsikotropika;
       nama = psikotropika;
       detail = detailPsikotropika;
       efek = efekPsikotropika;
+      napza = InfoNapza.psikotropika;
+      kategoriNapza = InfoNapza.jenisPsikotropika;
     } else {
       images = imagesZatAdiktif;
       nama = zatAdiktif;
       detail = detailZatAdiktif;
       efek = efekZatAdiktif;
+      napza = InfoNapza.zatAdiktif;
+      kategoriNapza = InfoNapza.jenisZatAdiktif;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var efekList = <Widget>[];
+    for (var text in kategoriNapza) {
+      print(text);
+      efekList.add(UnorderedListItem(text));
+      efekList.add(SizedBox(
+        height: 5.0,
+      ));
+    }
+
+    var jenisListView = <Widget>[];
+    for (var i = 0; i < nama.length; i++){
+      print(i);
+      jenisListView.add(JenisListItem(detail[i], efek[i], nama[i], images[i]));
+    }
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -138,114 +164,152 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                     color: Colors.grey[100],
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(40))),
-                child: ListView.builder(
-                  itemCount: nama.length,
-                  itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(
-                        vertical: size.height * 0.01),
-                    height: size.height * .1,
-                    width: size.width,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(50),
-                      child: InkWell(
-                        onTap: () {
-                          Map payload = {
-                            'napza': detail[index],
-                            'efek': efek[index],
-                            'name': nama[index],
-                            'picture': images[index]
-                          };
-                          Navigator.of(context).pushNamed(
-                              Routes.detailJenisNapza,
-                              arguments: payload);
-                        },
-                        child: Stack(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(images[index]),
-                                ),
-                              ),
-                              // child: Image.asset(
-                              //   images[index],
-                              //   width: size.width,
-                              //   // height: 50,
-                              //   fit: BoxFit.none,
-                              // ),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.black
-                                      ]),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                // decoration: BoxDecoration(
-                                //     gradient: LinearGradient(
-                                //         begin: Alignment.topRight,
-                                //         end: Alignment.bottomLeft,
-                                //         colors: [
-                                //       Colors.transparent,
-                                //       Colors.black
-                                //     ])),
-                                margin: EdgeInsets.only(left: size.width * 0.1),
-                                alignment: Alignment.centerLeft,
-                                height: 52,
-                                width: size.width * 0.7,
-                                // decoration: BoxDecoration(
-                                //     color: Colors.red, shape: BoxShape.circle),
-                                child: Text(
-                                  nama[index],
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5
-                                      .copyWith(
-                                          fontFamily: 'Poppins-SemiBold',
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Container(
-                                margin:
-                                    EdgeInsets.only(right: size.width * 0.03),
-                                alignment: Alignment.center,
-                                height: 52,
-                                width: 52,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    shape: BoxShape.circle),
-                                child: Icon(const IconData(58849,
-                                    fontFamily: 'MaterialIcons',
-                                    matchTextDirection: true)),
-                              ),
-                            ),
-                          ],
-                        ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      RichText(
+                          text: TextSpan(
+                              text: '${widget.jenis}\n',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  // fontWeight: FontWeight.bold,
+
+                                  fontFamily: 'Poppins-SemiBold'),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text: napza,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                ))
+                          ])),
+                      // Text(widget.jenis),
+                      // Text(InfoNapza.narkoba),
+                      Column(
+                        children: efekList,
                       ),
-                    ),
-                  );
-                })),
+                      Column(
+                        children: jenisListView,
+                      )
+                      // Expanded(
+                      //   child: ListView.builder(
+                      //       itemCount: nama.length,
+                      //       itemBuilder: (context, index) {
+                      //         return Container(
+                      //           margin: EdgeInsets.symmetric(
+                      //               vertical: size.height * 0.01),
+                      //           height: size.height * .1,
+                      //           width: size.width,
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.black,
+                      //               borderRadius: BorderRadius.circular(50)),
+                      //           child: Material(
+                      //             borderRadius: BorderRadius.circular(50),
+                      //             child: InkWell(
+                      //               onTap: () {
+                      //                 Map payload = {
+                      //                   'napza': detail[index],
+                      //                   'efek': efek[index],
+                      //                   'name': nama[index],
+                      //                   'picture': images[index]
+                      //                 };
+                      //                 Navigator.of(context).pushNamed(
+                      //                     Routes.detailJenisNapza,
+                      //                     arguments: payload);
+                      //               },
+                      //               child: Stack(
+                      //                 children: <Widget>[
+                      //                   Container(
+                      //                     decoration: BoxDecoration(
+                      //                       borderRadius:
+                      //                           BorderRadius.circular(50),
+                      //                       image: DecorationImage(
+                      //                         fit: BoxFit.cover,
+                      //                         image: AssetImage(images[index]),
+                      //                       ),
+                      //                     ),
+                      //                     // child: Image.asset(
+                      //                     //   images[index],
+                      //                     //   width: size.width,
+                      //                     //   // height: 50,
+                      //                     //   fit: BoxFit.none,
+                      //                     // ),
+                      //                     child: Container(
+                      //                       decoration: BoxDecoration(
+                      //                         borderRadius:
+                      //                             BorderRadius.circular(50),
+                      //                         gradient: LinearGradient(
+                      //                             begin: Alignment.topRight,
+                      //                             end: Alignment.bottomLeft,
+                      //                             colors: [
+                      //                               Colors.transparent,
+                      //                               Colors.black
+                      //                             ]),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                   Container(
+                      //                     alignment: Alignment.centerLeft,
+                      //                     child: Container(
+                      //                       // decoration: BoxDecoration(
+                      //                       //     gradient: LinearGradient(
+                      //                       //         begin: Alignment.topRight,
+                      //                       //         end: Alignment.bottomLeft,
+                      //                       //         colors: [
+                      //                       //       Colors.transparent,
+                      //                       //       Colors.black
+                      //                       //     ])),
+                      //                       margin: EdgeInsets.only(
+                      //                           left: size.width * 0.1),
+                      //                       alignment: Alignment.centerLeft,
+                      //                       height: 52,
+                      //                       width: size.width * 0.7,
+                      //                       // decoration: BoxDecoration(
+                      //                       //     color: Colors.red, shape: BoxShape.circle),
+                      //                       child: Text(
+                      //                         nama[index],
+                      //                         style: Theme.of(context)
+                      //                             .textTheme
+                      //                             .headline5
+                      //                             .copyWith(
+                      //                                 fontFamily:
+                      //                                     'Poppins-SemiBold',
+                      //                                 fontWeight: FontWeight.w900,
+                      //                                 color: Colors.white),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                   Align(
+                      //                     alignment: Alignment.centerRight,
+                      //                     child: Container(
+                      //                       margin: EdgeInsets.only(
+                      //                           right: size.width * 0.03),
+                      //                       alignment: Alignment.center,
+                      //                       height: 52,
+                      //                       width: 52,
+                      //                       decoration: BoxDecoration(
+                      //                           color: Colors.white,
+                      //                           shape: BoxShape.circle),
+                      //                       child: Icon(const IconData(58849,
+                      //                           fontFamily: 'MaterialIcons',
+                      //                           matchTextDirection: true)),
+                      //                     ),
+                      //                   ),
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //           ),
+                      //         );
+                      //       }),
+                      // ),
+                    ],
+                  ),
+                )),
           )
         ],
       ),
     );
   }
 }
+

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:info_napza/category_card.dart';
 import 'package:info_napza/common/routing/routes.dart';
-import 'package:info_napza/details_screen.dart';
-import 'package:info_napza/search_bar.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 
 class MyHomePageScreen extends StatefulWidget{

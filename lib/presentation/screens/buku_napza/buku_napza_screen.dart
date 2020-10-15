@@ -66,59 +66,86 @@ class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+                padding: EdgeInsets.symmetric(vertical: size.height * 0.03),
                 height: size.height * .65,
                 decoration: BoxDecoration(
                     color: Colors.grey[100],
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(40))),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    BookCard(
-                      title: "Raih Prestasi Tanpa Narkoba",
-                      // svgSrc: "assets/icons/Hamburger.svg",
-                      pictureSrc: "assets/images/buku1.png",
-                      press: () async {
-                        document =
-                            await PDFDocument.openAsset('assets/pdf/1.pdf');
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          BookCard(
+                            title: "Raih Prestasi Tanpa Narkoba",
+                            // svgSrc: "assets/icons/Hamburger.svg",
+                            pictureSrc: "assets/images/buku1.png",
+                            press: () async {
+                              document =
+                                  await PDFDocument.openAsset('assets/pdf/1.pdf');
 
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return BookViewScreen(document: document,title: "Raih Prestasi Tanpa Narkoba",);
-                        }));
-                      },
-                    ),
-                    BookCard(
-                      title: "Awas! Narkoba Masuk Desa",
-                      // svgSrc: "assets/icons/Hamburger.svg",
-                      pictureSrc: "assets/images/buku2.png",
-                      press: () async {
-                        document =
-                            await PDFDocument.openAsset('assets/pdf/2.pdf');
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return BookViewScreen(document: document,title: "Raih Prestasi Tanpa Narkoba",);
+                              }));
+                            },
+                          ),
+                          BookCard(
+                            title: "Awas! Narkoba Masuk Desa",
+                            // svgSrc: "assets/icons/Hamburger.svg",
+                            pictureSrc: "assets/images/buku2.png",
+                            press: () async {
+                              document =
+                                  await PDFDocument.openAsset('assets/pdf/2.pdf');
 
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return BookViewScreen(document: document, title: "Awas! Narkoba Masuk Desa");
-                        }));
-                      },
-                    ),
-                    BookCard(
-                      title: "Keluarga Sehat Tanpa Narkoba",
-                      // svgSrc: "assets/icons/Hamburger.svg",
-                      pictureSrc: "assets/images/buku3.png",
-                      press: () async {
-                        document =
-                            await PDFDocument.openAsset('assets/pdf/3.pdf');
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return BookViewScreen(document: document, title: "Awas! Narkoba Masuk Desa");
+                              }));
+                            },
+                          ),
+                          BookCard(
+                            title: "Keluarga Sehat Tanpa Narkoba",
+                            // svgSrc: "assets/icons/Hamburger.svg",
+                            pictureSrc: "assets/images/buku3.png",
+                            press: () async {
+                              document =
+                                  await PDFDocument.openAsset('assets/pdf/3.pdf');
 
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return BookViewScreen(document: document, title: "Keluarga Sehat Tanpa Narkoba",);
-                        }));
-                      },
-                    ),
-                  ],
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return BookViewScreen(document: document, title: "Keluarga Sehat Tanpa Narkoba",);
+                              }));
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          BookCard(
+                            title: "Buletin Napza",
+                            // svgSrc: "assets/icons/Hamburger.svg",
+                            pictureSrc: "assets/images/buku4.png",
+                            press: () async {
+                              document =
+                                  await PDFDocument.openAsset('assets/pdf/4.pdf');
+
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return BookViewScreen(document: document,title: "Buletin Napza",);
+                              }));
+                            },
+                          ),
+                         
+                        ],
+                      ),
+                    ],
+                  ),
                 )
                 // child : GridView.count(
                 //   crossAxisCount: 3,
@@ -152,78 +179,6 @@ class _BukuNapzaScreenState extends State<BukuNapzaScreen> {
                 // )
                 ),
           )
-          // Container(
-          //   margin: EdgeInsets.only(top: size.height * 0.15),
-          //   // color: Colors.red,
-          //   child: ListView.builder(
-          //             itemCount: 3,
-          //             itemBuilder: (context, index){
-          //               return Container(
-          //                 margin: EdgeInsets.symmetric(
-          //                   vertical: 10,
-          //                   horizontal: size.width * 0.05
-
-          //                   ),
-          //                 // padding: EdgeInsets.all(10),
-          //                 height: 90,
-          //                 decoration: BoxDecoration(
-          //                   color: Colors.white,
-          //                   borderRadius: BorderRadius.circular(13),
-          //                   boxShadow: [
-          //                     BoxShadow(
-          //                       offset: Offset(0, 17),
-          //                       blurRadius: 23,
-          //                       spreadRadius: -13,
-          //                       color: Color(0xFFE6E6E6),
-          //                     ),
-          //                   ],
-          //                 ),
-          //                 child: RaisedButton(
-          //                   color: Colors.white,
-          //                   shape: RoundedRectangleBorder(
-          //                     borderRadius: BorderRadius.circular(18.0),
-          //                   ),
-          //                   onPressed: ()async {
-
-          //                     document = await PDFDocument.openAsset('assets/pdf/${index+1}.pdf');
-
-          //                     Navigator.push(
-          //                       context,
-          //                       MaterialPageRoute(builder: (context) {
-          //                         return BookViewScreen(document: document);
-          //                       })
-          //                     );
-          //                   },
-          //                                             child: Row(
-          //                     children: <Widget>[
-          //                       SvgPicture.asset(
-          //                         "assets/icons/Meditation_women_small.svg",
-          //                       ),
-          //                       SizedBox(width: 20),
-          //                       Expanded(
-          //                         child: Column(
-          //                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //                           crossAxisAlignment: CrossAxisAlignment.start,
-          //                           children: <Widget>[
-          //                             Text(
-          //                               "Basic ${index+1}",
-          //                               style: Theme.of(context).textTheme.subtitle,
-          //                             ),
-          //                             Text("Start your deepen you practice")
-          //                           ],
-          //                         ),
-          //                       ),
-          //                       Padding(
-          //                         padding: EdgeInsets.all(10),
-          //                         child: SvgPicture.asset("assets/icons/Lock.svg"),
-          //                       ),
-          //                     ],
-          //                   ),
-          //                 ),
-          //               );
-          //             }
-          //           ),
-          // )
         ],
       ),
     );
