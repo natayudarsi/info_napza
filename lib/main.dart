@@ -1,11 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:info_napza/bottom_navbar.dart';
-import 'package:info_napza/category_card.dart';
-import 'package:info_napza/details_screen.dart';
-import 'package:info_napza/home.dart';
-import 'package:info_napza/home_page.dart';
-import 'package:info_napza/search_bar.dart';
 
 import 'app.dart' as app;
 void main() {

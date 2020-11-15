@@ -1,6 +1,5 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:info_napza/category_card.dart';
 import 'package:info_napza/common/routing/routes.dart';
 import 'package:info_napza/model/jenis_napza_model.dart';
 
@@ -10,22 +9,26 @@ class JenisNapzaHomeScreen extends StatefulWidget {
 }
 
 class _JenisNapzaHomeScreenState extends State<JenisNapzaHomeScreen> {
-  // List<String> images = [
-  //   'assets/images/ganja.jpeg',
-  //   'assets/images/kokain.jpg',
-  //   'assets/images/ekstasi.png',
-  //   'assets/images/morphine-pills.jpg',
-  //   'assets/images/morphine-pills.jpg'
-  // ];
-  // List<String> name = ['Sabu', 'Cocain', 'Ekstasy', 'Morfin', 'Obat Penenang'];
-  // List<String> detailName = [shabu, cocain, ekstasy, morfin, obatPenenang];
-  // List<dynamic> efekNapza = [
-  //   efekShabu,
-  //   efekCocain,
-  //   efekEkstasy,
-  //   efekMorfin,
-  //   efekObatPenenang
-  // ];
+
+  void _penjelasanLanjutan() {
+    showDialog(
+        context: context,
+
+        // barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0))),
+            content: SingleChildScrollView(
+              child: Container(
+                  child: Text(
+                napzaAdalahDetail,
+                style: TextStyle(fontSize: 16, fontFamily: 'Roboto'),
+              )),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,11 +81,26 @@ class _JenisNapzaHomeScreenState extends State<JenisNapzaHomeScreen> {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      napzaAdalah,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'Roboto',
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'Roboto'),
+                        children: <TextSpan>[
+                          TextSpan(text: napzaAdalah),
+                          TextSpan(
+                              text: '[1]',
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 12,
+                                  fontFamily: 'Roboto'),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  _penjelasanLanjutan();
+                                  print('Terms of Service"');
+                                }),
+                        ],
                       ),
                     ),
                     WidgetNapza(

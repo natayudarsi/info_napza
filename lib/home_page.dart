@@ -64,16 +64,16 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
                             Navigator.of(context).pushNamed(Routes.jenisNapzaHomeScreen);
                           },
                         ),
-                        CategoryCard(
-                          title: "Buku",
-                          colors: Color(0x1aed7d32),
-                          textColor: Color(0xffed7d32),
-                          // svgSrc: "assets/icons/Excrecises.svg",
-                          pictureSrc: 'assets/images/book.png',
-                          press: () {
-                            Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
-                          },
-                        ),
+                        // CategoryCard(
+                        //   title: "Buku",
+                        //   colors: Color(0x1aed7d32),
+                        //   textColor: Color(0xffed7d32),
+                        //   // svgSrc: "assets/icons/Excrecises.svg",
+                        //   pictureSrc: 'assets/images/book.png',
+                        //   press: () {
+                        //     Navigator.of(context).pushNamed(Routes.bukuNapzaScreen);
+                        //   },
+                        // ),
                         CategoryCard(
                           title: "Info",
                           colors: Color(0x1aff5a5a),

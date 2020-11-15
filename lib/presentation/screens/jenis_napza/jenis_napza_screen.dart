@@ -1,7 +1,5 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:info_napza/category_card.dart';
-import 'package:info_napza/common/routing/routes.dart';
 import 'package:info_napza/model/info_napza.dart';
 import 'package:info_napza/model/jenis_napza_model.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
@@ -76,6 +74,31 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
   String napza;
   List kategoriNapza;
 
+  void _penjelasanLanjutan(String text, Widget widget) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0))),
+            content: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(text,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Roboto',
+                        )),
+                    widget
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -116,7 +139,7 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
     }
 
     var jenisListView = <Widget>[];
-    for (var i = 0; i < nama.length; i++){
+    for (var i = 0; i < nama.length; i++) {
       print(i);
       jenisListView.add(JenisListItem(detail[i], efek[i], nama[i], images[i]));
     }
@@ -182,127 +205,33 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Roboto',
-                                ))
+                                )),
+                            TextSpan(
+                                text: widget.jenis == 'Narkotika'
+                                    ? '[2]'
+                                    : widget.jenis == 'Psikotropika'
+                                        ? '[3]'
+                                        : '[4]',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 12,
+                                    fontFamily: 'Roboto'),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    _penjelasanLanjutan(
+                                      napza,
+                                      Column(
+                                        children: efekList,
+                                      ),
+                                    );
+                                  }),
                           ])),
-                      // Text(widget.jenis),
-                      // Text(InfoNapza.narkoba),
-                      Column(
-                        children: efekList,
-                      ),
+                      // Column(
+                      //   children: efekList,
+                      // ),
                       Column(
                         children: jenisListView,
                       )
-                      // Expanded(
-                      //   child: ListView.builder(
-                      //       itemCount: nama.length,
-                      //       itemBuilder: (context, index) {
-                      //         return Container(
-                      //           margin: EdgeInsets.symmetric(
-                      //               vertical: size.height * 0.01),
-                      //           height: size.height * .1,
-                      //           width: size.width,
-                      //           decoration: BoxDecoration(
-                      //               color: Colors.black,
-                      //               borderRadius: BorderRadius.circular(50)),
-                      //           child: Material(
-                      //             borderRadius: BorderRadius.circular(50),
-                      //             child: InkWell(
-                      //               onTap: () {
-                      //                 Map payload = {
-                      //                   'napza': detail[index],
-                      //                   'efek': efek[index],
-                      //                   'name': nama[index],
-                      //                   'picture': images[index]
-                      //                 };
-                      //                 Navigator.of(context).pushNamed(
-                      //                     Routes.detailJenisNapza,
-                      //                     arguments: payload);
-                      //               },
-                      //               child: Stack(
-                      //                 children: <Widget>[
-                      //                   Container(
-                      //                     decoration: BoxDecoration(
-                      //                       borderRadius:
-                      //                           BorderRadius.circular(50),
-                      //                       image: DecorationImage(
-                      //                         fit: BoxFit.cover,
-                      //                         image: AssetImage(images[index]),
-                      //                       ),
-                      //                     ),
-                      //                     // child: Image.asset(
-                      //                     //   images[index],
-                      //                     //   width: size.width,
-                      //                     //   // height: 50,
-                      //                     //   fit: BoxFit.none,
-                      //                     // ),
-                      //                     child: Container(
-                      //                       decoration: BoxDecoration(
-                      //                         borderRadius:
-                      //                             BorderRadius.circular(50),
-                      //                         gradient: LinearGradient(
-                      //                             begin: Alignment.topRight,
-                      //                             end: Alignment.bottomLeft,
-                      //                             colors: [
-                      //                               Colors.transparent,
-                      //                               Colors.black
-                      //                             ]),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                   Container(
-                      //                     alignment: Alignment.centerLeft,
-                      //                     child: Container(
-                      //                       // decoration: BoxDecoration(
-                      //                       //     gradient: LinearGradient(
-                      //                       //         begin: Alignment.topRight,
-                      //                       //         end: Alignment.bottomLeft,
-                      //                       //         colors: [
-                      //                       //       Colors.transparent,
-                      //                       //       Colors.black
-                      //                       //     ])),
-                      //                       margin: EdgeInsets.only(
-                      //                           left: size.width * 0.1),
-                      //                       alignment: Alignment.centerLeft,
-                      //                       height: 52,
-                      //                       width: size.width * 0.7,
-                      //                       // decoration: BoxDecoration(
-                      //                       //     color: Colors.red, shape: BoxShape.circle),
-                      //                       child: Text(
-                      //                         nama[index],
-                      //                         style: Theme.of(context)
-                      //                             .textTheme
-                      //                             .headline5
-                      //                             .copyWith(
-                      //                                 fontFamily:
-                      //                                     'Poppins-SemiBold',
-                      //                                 fontWeight: FontWeight.w900,
-                      //                                 color: Colors.white),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                   Align(
-                      //                     alignment: Alignment.centerRight,
-                      //                     child: Container(
-                      //                       margin: EdgeInsets.only(
-                      //                           right: size.width * 0.03),
-                      //                       alignment: Alignment.center,
-                      //                       height: 52,
-                      //                       width: 52,
-                      //                       decoration: BoxDecoration(
-                      //                           color: Colors.white,
-                      //                           shape: BoxShape.circle),
-                      //                       child: Icon(const IconData(58849,
-                      //                           fontFamily: 'MaterialIcons',
-                      //                           matchTextDirection: true)),
-                      //                     ),
-                      //                   ),
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         );
-                      //       }),
-                      // ),
                     ],
                   ),
                 )),
@@ -312,4 +241,3 @@ class _JenisNapzaScreenState extends State<JenisNapzaScreen> {
     );
   }
 }
-

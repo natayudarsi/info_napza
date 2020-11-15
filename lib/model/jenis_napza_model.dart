@@ -134,7 +134,8 @@ List efekWiski =['Gangguan Mental Organik (GMO).',
     'Paranoid.',
     'Keracunan / Mabuk.'];
 
-String napzaAdalah = 'NAPZA merupakan akronim dari Narkoba, Psikotropika dan Zat Adiktif lainnya yang merupakan jenis obat-obatan yang dapat mempengaruhi gangguan kesehatan dan kejiwaan. NAPZA secara umum merupakan zat-zat kimiawi yang apabila dimasukkan ke dalam tubuh baik secara oral (diminum, dihisap dan dihirup) maupun disuntik dapat mempengaruhi pikiran, suasana hati, perasaan dan perilaku seseorang. Hal ini dapat menimbulkan gangguan keadaan sosial yang ditandai dengan indikasi negatif, waktu pemakaian yang panjang dan pemakaian yang berlebihan.';
+String napzaAdalah = 'NAPZA merupakan akronim dari Narkoba, Psikotropika dan Zat Adiktif lainnya yang merupakan jenis obat-obatan yang dapat mempengaruhi gangguan kesehatan dan kejiwaan.';
+String napzaAdalahDetail = 'NAPZA secara umum merupakan zat-zat kimiawi yang apabila dimasukkan ke dalam tubuh baik secara oral (diminum, dihisap dan dihirup) maupun disuntik dapat mempengaruhi pikiran, suasana hati, perasaan dan perilaku seseorang. Hal ini dapat menimbulkan gangguan keadaan sosial yang ditandai dengan indikasi negatif, waktu pemakaian yang panjang dan pemakaian yang berlebihan.';
 
 class KecanduanNapza {
   static const String pengertian = 'Pengguna narkoba yang sudah mengalami kecanduan, tidak akan mudah lepas dari jerat barang tersebut. Diperlukan sebuah langkah yang cepat, salah satunya dengan menghubungi BNN. Di lembaga resmi pemerintah ini, pendaftaran rehabilitasi bisa dilakukan secara online. Proses rehabilitasi nantinya akan dilakukan secara total agar pemakai tidak kembali memakai obat-obatan tersebut. Secara umum, ada 4 langkah yang dilakukan untuk mengatasi kecanduan narkoba dan di antaranya adalah:';

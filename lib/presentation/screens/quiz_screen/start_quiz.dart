@@ -1,10 +1,5 @@
-import 'dart:async';
-
-// import 'package:app_quiz/model/angket_model.dart';
-// import 'package:app_quiz/presentation/widget/loading_soal.dart';
 import 'package:flutter/material.dart';
 import 'package:info_napza/common/routing/routes.dart';
-import 'package:info_napza/model/kuis_model.dart';
 // import 'package:charts_flutter/flutter.dart' as charts;
 
 class QuizScreenStart extends StatelessWidget {
@@ -48,7 +43,7 @@ class QuizScreenStart extends StatelessWidget {
                       margin: EdgeInsets.only(
                         bottom: size.height * .02
                       ),
-                      child: Text('Kamu akan memulai Kuis dari Aplikasi Informasi NAPZA. Akan ada 20 Soal yang harus kamu jawab dan pilihlah jawaban yang menurutmu benar',
+                      child: Text('Kamu akan memulai Kuis dari Aplikasi Informasi NAPZA. Akan ada 10 Soal yang harus kamu jawab dan pilihlah jawaban yang menurutmu benar',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 18,

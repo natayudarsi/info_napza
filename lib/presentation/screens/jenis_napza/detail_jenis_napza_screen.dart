@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailJenisNapzaScreen extends StatelessWidget {
   final String name;
@@ -139,96 +138,7 @@ class DetailJenisNapzaScreen extends StatelessWidget {
             ),
           ),
         ),
-        //  Column(
-        //    children: <Widget>[
-        //     Padding(
-        //       padding: EdgeInsets.all(32),
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: <Widget>[
-        //           SizedBox(height: size.height * 0.3,),
-        //           SizedBox(
-        //             width:size.width * 0.9,
-        //             height: size.height * 0.5,
-        //             child: SingleChildScrollView(
-        //               child: Column(
-        //                 crossAxisAlignment: CrossAxisAlignment.start,
-        //                 children: <Widget>[
-        //                   RichText(
-        //                     text: TextSpan(
-        //                       text: 'Apa sih ',
-        //                       style: Theme.of(context)
-        //                           .textTheme
-        //                           .headline4
-        //                           .copyWith(
-        //                               fontWeight: FontWeight.w600,),
-        //                       children: <TextSpan>[
-        //                         TextSpan(
-        //                           text: name,
-        //                           style : Theme.of(context)
-        //                           .textTheme
-        //                           .headline4
-        //                           .copyWith(
-        //                               fontWeight: FontWeight.w800, color: Colors.black)
-        //                         ),
-        //                         TextSpan(
-        //                           text: ' itu ?'
-        //                         )
-        //                       ]
-        //                     ),
-        //                   ),
-        //                   SizedBox(
-        //                     height: size.height * 0.01,
-        //                   ),
-        //                   Text(napza,
-        //                     style: TextStyle(
-        //                       fontSize: 16
-        //                     ),
-        //                   ),
-        //                   SizedBox(
-        //                     height: size.height * 0.03,
-        //                   ),
-        //                   RichText(
-        //                     text: TextSpan(
-        //                       text: 'Efek ',
-        //                       style: Theme.of(context)
-        //                           .textTheme
-        //                           .headline4
-        //                           .copyWith(
-        //                               fontWeight: FontWeight.w600,),
-        //                       children: <TextSpan>[
-        //                         TextSpan(
-        //                           text: name,
-        //                           style : Theme.of(context)
-        //                           .textTheme
-        //                           .headline4
-        //                           .copyWith(
-        //                               fontWeight: FontWeight.w800, color: Colors.black)
-        //                         ),
-        //                       ]
-        //                     ),
-        //                   ),
-        //                   SizedBox(
-        //                     height: size.height * 0.01,
-        //                   ),
-        //                   Column(
-        //                     children: efekList,
-        //                   ),
-
-        //                 ],
-        //               ),
-        //             )
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //    ]
-        //  ),
-        //  Container(
-        //    width: size.width,
-        //    height: size.height * 0.3,
-        //    child: Image.asset(image)
-        //   )
+        
       ],
     ));
   }

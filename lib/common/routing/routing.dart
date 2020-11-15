@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:info_napza/home_page.dart';
-import 'package:info_napza/presentation/screens/buku_napza/buku_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/detail_jenis_napza_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_home_screen.dart';
 import 'package:info_napza/presentation/screens/jenis_napza/jenis_napza_screen.dart';
@@ -20,23 +19,12 @@ class RouteGenerator {
       case Routes.homeScreen:
         return MaterialPageRoute<dynamic>(
           builder: (_) => _buildHomeScreen());
-      
-      // case Routes.jenisNapzaScreen:
-      //   return SlideRouteTransition(
-      //    animationTo: AnimationTo.left,
-      //    page: _buildJenisScreen()
-      //   ) ;
-      // case Routes.kuisScreen:
+
+      // case Routes.bukuNapzaScreen:
       //   return SlideRouteTransition(
       //     animationTo: AnimationTo.left,
-      //     page: _kuisScreen()
+      //     page: _buildBukuNapzaScreen()
       //   );
-
-      case Routes.bukuNapzaScreen:
-        return SlideRouteTransition(
-          animationTo: AnimationTo.left,
-          page: _buildBukuNapzaScreen()
-        );
 
       case Routes.jenisNapzaHomeScreen:
         return SlideRouteTransition(
@@ -92,9 +80,9 @@ class RouteGenerator {
       return ErrorScreen();
   }
 
-  static Widget _buildBukuNapzaScreen() {
-    return BukuNapzaScreen();
-  }
+  // static Widget _buildBukuNapzaScreen() {
+  //   return BukuNapzaScreen();
+  // }
 
   static Widget _buildJenisNapzaHomeScreen() {
     return JenisNapzaHomeScreen();

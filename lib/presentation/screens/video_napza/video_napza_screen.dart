@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:info_napza/category_card.dart';
-import 'package:info_napza/common/routing/routes.dart';
 import 'package:info_napza/model/jenis_napza_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
